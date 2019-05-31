@@ -1,6 +1,6 @@
 /*
 
-	TODO: make it so that the user can select other and it will allow you to type in your own percentage in a new input box that pops up only when other is selected
+	TODO: when other is selected, make it required so that if there is nothing in there you get an error just like bill amount and num or people
 	*/
 
 	function getTip() {
@@ -17,9 +17,9 @@
 
 			var otherPercent = document.getElementById('otherPercentID').value;
 
-			document.getElementsByClassName('tipPerPerson')[0].innerHTML = ((billAmount * (otherPercent/100))/numOfPeople).toFixed(2);
+			document.getElementsByClassName('tipPerPerson')[0].innerHTML = "$" + ((billAmount * (otherPercent/100))/numOfPeople).toFixed(2);
 
-			document.getElementsByClassName('totalPerPerson')[0].innerHTML = ((billAmount * (1+(otherPercent/100)))/numOfPeople).toFixed(2);
+			document.getElementsByClassName('totalPerPerson')[0].innerHTML = "$" + ((billAmount * (1+(otherPercent/100)))/numOfPeople).toFixed(2);
 
 		}
 		else
@@ -27,32 +27,32 @@
 			//switch case depending on selection
 			switch (tipPercent) {
 				case "outstanding":
-				document.getElementsByClassName('tipPerPerson')[0].innerHTML = ((billAmount * .25)/numOfPeople).toFixed(2);
+				document.getElementsByClassName('tipPerPerson')[0].innerHTML = "$" + ((billAmount * .25)/numOfPeople).toFixed(2);
 				break;
 				case "great":
-				document.getElementsByClassName('tipPerPerson')[0].innerHTML = ((billAmount * .20)/numOfPeople).toFixed(2);
+				document.getElementsByClassName('tipPerPerson')[0].innerHTML = "$" + ((billAmount * .20)/numOfPeople).toFixed(2);
 				break;
 				case "average":
-				document.getElementsByClassName('tipPerPerson')[0].innerHTML = ((billAmount * .15)/numOfPeople).toFixed(2);
+				document.getElementsByClassName('tipPerPerson')[0].innerHTML = "$" + ((billAmount * .15)/numOfPeople).toFixed(2);
 				break;
 				case "subpar":
-				document.getElementsByClassName('tipPerPerson')[0].innerHTML = ((billAmount * .10)/numOfPeople).toFixed(2);
+				document.getElementsByClassName('tipPerPerson')[0].innerHTML = "$" + ((billAmount * .10)/numOfPeople).toFixed(2);
 				break;
 			}
 	//equate for total bill per person - (total bill * 1.tip percent as decimal) / number of people - switch case with select element (%)
 
 	switch (tipPercent) {
 		case "outstanding":
-		document.getElementsByClassName('totalPerPerson')[0].innerHTML = ((billAmount * 1.25)/numOfPeople).toFixed(2);
+		document.getElementsByClassName('totalPerPerson')[0].innerHTML = "$" + ((billAmount * 1.25)/numOfPeople).toFixed(2);
 		break;
 		case "great":
-		document.getElementsByClassName('totalPerPerson')[0].innerHTML = ((billAmount * 1.20)/numOfPeople).toFixed(2);
+		document.getElementsByClassName('totalPerPerson')[0].innerHTML = "$" + ((billAmount * 1.20)/numOfPeople).toFixed(2);
 		break;
 		case "average":
-		document.getElementsByClassName('totalPerPerson')[0].innerHTML = ((billAmount * 1.15)/numOfPeople).toFixed(2);
+		document.getElementsByClassName('totalPerPerson')[0].innerHTML = "$" + ((billAmount * 1.15)/numOfPeople).toFixed(2);
 		break;
 		case "subpar":
-		document.getElementsByClassName('totalPerPerson')[0].innerHTML = ((billAmount * 1.10)/numOfPeople).toFixed(2);
+		document.getElementsByClassName('totalPerPerson')[0].innerHTML = "$" + ((billAmount * 1.10)/numOfPeople).toFixed(2);
 		break;
 	}
 }
@@ -118,6 +118,7 @@ function isEmpty() {
 
 }
 
+
 function otherSelect() {
 	//if other is selected, add a new input box
 
@@ -133,6 +134,35 @@ function otherSelect() {
 		
 	}
 }
+
+function clearInput() {
+
+	//clear bill amount text box
+	document.getElementById('billAmountID').value = "";
+	//clear num of people text box
+	document.getElementById('numOfPeopleID').value = "";
+	//clear the output text
+	document.getElementsByClassName('tipPerPerson')[0].innerHTML = "";
+	document.getElementsByClassName('totalPerPerson')[0].innerHTML = "";
+	//clear the other percent text box if need be
+	document.getElementById('otherPercentID').value = "";
+	//reset the dropdown to default
+	document.getElementById('percentTipSelector').selectedIndex = 1;
+	//hide the other selection text input
+	document.getElementById('otherPercentID').style.display = "none";
+	//set the errror messages to blank
+	document.getElementById('noBillError').innerHTML = "";
+	document.getElementById('noPeopleError').innerHTML = "";
+	
+
+}
+
+
+
+
+
+
+
 
 
 
