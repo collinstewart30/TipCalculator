@@ -75,11 +75,15 @@ function isEmpty() {
 		if (billAmount === "0" || billAmount === "")
 		{
 			document.getElementById('noBillError').innerHTML = "*Please Insert Bill Amount";
+			document.getElementsByClassName('tipPerPerson')[0].innerHTML = "";
+			document.getElementsByClassName('totalPerPerson')[0].innerHTML = "";
 
 			//if the person amount is blank, put text in the red person amount asking for input
 			if (numOfPeople === "0" || numOfPeople === "")
 			{
 				document.getElementById('noPeopleError').innerHTML = "*Please Insert Number Of People";
+				document.getElementsByClassName('tipPerPerson')[0].innerHTML = "";
+				document.getElementsByClassName('totalPerPerson')[0].innerHTML = "";
 			}
 			else
 			{
@@ -95,6 +99,8 @@ function isEmpty() {
 			if (numOfPeople === "0" || numOfPeople === "")
 			{
 				document.getElementById('noPeopleError').innerHTML = "*Please Insert Number Of People";
+				document.getElementsByClassName('tipPerPerson')[0].innerHTML = "";
+				document.getElementsByClassName('totalPerPerson')[0].innerHTML = "";
 			}
 			else
 			{
